@@ -7,13 +7,14 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) {
-    char i = Serial.read(); 
+      String command = Serial.readStringUntil('\n');
+     command.trim();
 
-    if (i == '1') {
+    if (command == "on") {
       digitalWrite(pin, HIGH); 
       Serial.println("led on.");
     } 
-    else if (i == '0') {
+    else if (command == "off") {
       digitalWrite(pin, LOW); 
       Serial.println("led off.");
     } 
